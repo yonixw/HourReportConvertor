@@ -15,5 +15,14 @@ namespace GavHourReport
         {
             InitializeComponent();
         }
+
+        private void loadTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string inputDate = Microsoft.VisualBasic.Interaction.InputBox("Put Date: <MM>/<YY>");
+            if (inputDate != "")
+            {
+
+            }
+        }
     }
 }
