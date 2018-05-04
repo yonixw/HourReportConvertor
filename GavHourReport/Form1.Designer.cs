@@ -32,14 +32,15 @@
             this.loadTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadEXELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXPORTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvData = new System.Windows.Forms.DataGridView();
             this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cVacation = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -74,67 +75,82 @@
             this.eXPORTToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.eXPORTToolStripMenuItem.Text = "EXPORT";
             // 
-            // dataGridView1
+            // dgvData
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvData.AllowUserToAddRows = false;
+            this.dgvData.AllowUserToDeleteRows = false;
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cDate,
+            this.cDay,
             this.cHours,
             this.cMin,
             this.cSick,
             this.cVacation});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 24);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(972, 529);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvData.Location = new System.Drawing.Point(0, 24);
+            this.dgvData.Name = "dgvData";
+            this.dgvData.Size = new System.Drawing.Size(972, 529);
+            this.dgvData.TabIndex = 2;
             // 
             // cDate
             // 
-            this.cDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cDate.HeaderText = "Date";
             this.cDate.Name = "cDate";
             this.cDate.ReadOnly = true;
+            this.cDate.Width = 55;
+            // 
+            // cDay
+            // 
+            this.cDay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cDay.HeaderText = "Day";
+            this.cDay.Name = "cDay";
+            this.cDay.ReadOnly = true;
+            this.cDay.Width = 51;
             // 
             // cHours
             // 
-            this.cHours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cHours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cHours.HeaderText = "HH";
             this.cHours.Name = "cHours";
+            this.cHours.Width = 48;
             // 
             // cMin
             // 
-            this.cMin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cMin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cMin.HeaderText = "MM";
             this.cMin.Name = "cMin";
+            this.cMin.Width = 50;
             // 
             // cSick
             // 
-            this.cSick.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cSick.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cSick.HeaderText = "Sick?";
             this.cSick.Name = "cSick";
+            this.cSick.Width = 40;
             // 
             // cVacation
             // 
-            this.cVacation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cVacation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cVacation.HeaderText = "Vacation?";
             this.cVacation.Name = "cVacation";
+            this.cVacation.Width = 61;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 553);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvData);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GAV Exporter";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,8 +161,9 @@
         private System.Windows.Forms.ToolStripMenuItem loadTemplateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadEXELToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eXPORTToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn cHours;
         private System.Windows.Forms.DataGridViewTextBoxColumn cMin;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cSick;
