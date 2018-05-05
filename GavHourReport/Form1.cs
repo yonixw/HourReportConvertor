@@ -42,7 +42,7 @@ namespace GavHourReport
                             dgvData.Rows.Add(new object[] {
                                 day.ToString(dateFormat),
                                 culture.DateTimeFormat.GetDayName(day.DayOfWeek),
-                                "00:00", false, false, false });
+                                "00:00","00:00", false, false, false });
 
                             if (day.DayOfWeek == DayOfWeek.Friday || day.DayOfWeek == DayOfWeek.Saturday)
                             {
@@ -77,17 +77,21 @@ namespace GavHourReport
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    Dictionary<string, TimeSpan> importData = ExcelFlow.RPTImport.import(dlg.FileName);
+                    Dictionary<string, ExcelFlow.DayInfo> importData = ExcelFlow.RPTImport.import(dlg.FileName);
 
                     foreach (DataGridViewRow row in dgvData.Rows)
                     {
                         string dateKey = row.Cells[0].Value.ToString();
                         if (importData.ContainsKey(dateKey))
                         {
-                            TimeSpan totalTime = importData[dateKey];
+                            TimeSpan startTime = importData[dateKey].dayStart;
+                            TimeSpan totalTime = importData[dateKey].dayLength;
                             row.Cells["cTIME"].Value = string.Format("{0:00}:{1:00}",
                                (int)totalTime.TotalHours,
                                     totalTime.Minutes);
+                            row.Cells["cStart"].Value = string.Format("{0:00}:{1:00}",
+                               (int)startTime.TotalHours,
+                                    startTime.Minutes);
                         }
                     }
                 }
@@ -113,7 +117,13 @@ namespace GavHourReport
                 dlgSave.Filter = "Excel|*.xls;*.xlsx";
                 dlgSave.CheckFileExists = true;
 
+                if (dlgOpen.ShowDialog() == DialogResult.OK)
+                {
+                    if (dlgSave.ShowDialog() == DialogResult.OK)
+                    {
 
+                    }
+                }
 
             }
             catch (Exception ex)

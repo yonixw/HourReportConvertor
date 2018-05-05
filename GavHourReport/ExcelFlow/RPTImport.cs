@@ -6,6 +6,12 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace GavHourReport.ExcelFlow
 {
+    public class DayInfo
+    {
+        public TimeSpan dayStart = TimeSpan.Zero;
+        public TimeSpan dayLength = TimeSpan.Zero;
+    }
+
     class RPTImport
     {
         // תוכנה בשם TIMELINE
@@ -18,16 +24,29 @@ namespace GavHourReport.ExcelFlow
             return "";
         }
 
+        public static TimeSpan valTimeDot(Excel.Range cell)
+        {
+            if (cell != null && cell.Value2 != null)
+            {
+                double value = (double)cell.Value2;
+                int HH = (int)Math.Floor(value);
+                int MM = (int)Math.Floor(((value - HH) * 100.0));
+                return new TimeSpan(HH, MM, 0);
+            }
+            return TimeSpan.Zero;
+        }
+
         public enum RPTCol
         {
             DATE = 8,
             DAYTEXT = 7,
+            TIMESTART = 6,
             ROWTIME = 4
         }
 
-        public static Dictionary<string, TimeSpan> import(string fileName)
+        public static Dictionary<string, DayInfo> import(string fileName)
         {
-            Dictionary<string, TimeSpan> resultDic = new Dictionary<string, TimeSpan>();
+            Dictionary<string, DayInfo> resultDic = new Dictionary<string, DayInfo>();
 
             Excel.Application app = new Excel.Application();
             app.Visible = true; // DEBUG
@@ -41,19 +60,28 @@ namespace GavHourReport.ExcelFlow
 
             while (descData != "") // Day description should always exist.
             {
-                string totalTime = valSTR((Excel.Range)wsheet.Cells[row, RPTCol.ROWTIME]);
+                // `*` if changed manually??
+                string totalTime = valSTR((Excel.Range)wsheet.Cells[row, RPTCol.ROWTIME]).Replace(" ", "").Replace("*", "");
+
                 if (totalTime != "")
                 {
                     string dateKey = valSTR((Excel.Range)wsheet.Cells[row, RPTCol.DATE]);
+                    TimeSpan startTime = valTimeDot((Excel.Range)wsheet.Cells[row, RPTCol.TIMESTART]);
+
                     if (dateKey == "") // When a day has multiple enteries.
                         dateKey = lastDateKey;
                     else
                         lastDateKey = dateKey;
 
                     if (!resultDic.ContainsKey(dateKey))
-                        resultDic.Add(dateKey, TimeSpan.Zero);
+                        resultDic.Add(dateKey, new DayInfo());
 
-                    resultDic[dateKey] += TimeSpan.Parse(totalTime.Replace(" ", "").Replace("*", "")); // * if changed manually??
+                    if (resultDic[dateKey].dayStart == TimeSpan.Zero)
+                    {
+                        resultDic[dateKey].dayStart = startTime;
+                    }
+
+                    resultDic[dateKey].dayLength += TimeSpan.Parse(totalTime); 
                 }
 
                 row++;

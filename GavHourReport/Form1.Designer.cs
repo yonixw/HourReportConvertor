@@ -35,6 +35,7 @@
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cVacation = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -85,6 +86,7 @@
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cDate,
             this.cDay,
+            this.cStart,
             this.cTIME,
             this.cSick,
             this.cVacation,
@@ -111,12 +113,19 @@
             this.cDay.ReadOnly = true;
             this.cDay.Width = 51;
             // 
+            // cStart
+            // 
+            this.cStart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cStart.HeaderText = "Start Work";
+            this.cStart.Name = "cStart";
+            this.cStart.Width = 83;
+            // 
             // cTIME
             // 
             this.cTIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cTIME.HeaderText = "Total";
+            this.cTIME.HeaderText = "Total Work";
             this.cTIME.Name = "cTIME";
-            this.cTIME.Width = 56;
+            this.cTIME.Width = 85;
             // 
             // cSick
             // 
@@ -166,6 +175,7 @@
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTIME;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cSick;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cVacation;
