@@ -20,6 +20,7 @@ namespace GavHourReport
         CultureInfo culture = new System.Globalization.CultureInfo("he-IL");
         public static string dateFormat = "dd/MM/yyyy";
 
+        DateTime lastMonthLoad = DateTime.MinValue;
         private void loadTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -32,6 +33,7 @@ namespace GavHourReport
                     if (DateTime.TryParse("01/" + inputDate, out day))
                     {
                         dgvData.Rows.Clear();
+                        lastMonthLoad = day;
 
                         currentMonth = day.Month;
 
