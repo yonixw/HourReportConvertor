@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace GavHourReport
+namespace GavHourReport.ExcelFlow
 {
 
-    class ExcelHandler
+    class GavExporter
     {
         Excel.Application app;
 
-        public ExcelHandler()
+        public GavExporter()
         {
             app = new Excel.Application();
             app.Visible = true;
