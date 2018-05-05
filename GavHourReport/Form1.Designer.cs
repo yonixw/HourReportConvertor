@@ -59,22 +59,23 @@
             // loadTemplateToolStripMenuItem
             // 
             this.loadTemplateToolStripMenuItem.Name = "loadTemplateToolStripMenuItem";
-            this.loadTemplateToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.loadTemplateToolStripMenuItem.Text = "Init days";
+            this.loadTemplateToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.loadTemplateToolStripMenuItem.Text = "1) Init days";
             this.loadTemplateToolStripMenuItem.Click += new System.EventHandler(this.loadTemplateToolStripMenuItem_Click);
             // 
             // loadEXELToolStripMenuItem
             // 
             this.loadEXELToolStripMenuItem.Name = "loadEXELToolStripMenuItem";
-            this.loadEXELToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.loadEXELToolStripMenuItem.Text = "Load EXCEL";
+            this.loadEXELToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.loadEXELToolStripMenuItem.Text = "2) Load hours";
+            this.loadEXELToolStripMenuItem.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
             // 
             // eXPORTToolStripMenuItem
             // 
             this.eXPORTToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.eXPORTToolStripMenuItem.Name = "eXPORTToolStripMenuItem";
-            this.eXPORTToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.eXPORTToolStripMenuItem.Text = "EXPORT";
+            this.eXPORTToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.eXPORTToolStripMenuItem.Text = "3) EXPORT";
             // 
             // dgvData
             // 
@@ -157,7 +158,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GAV Exporter";
+            this.Text = "Work hour converter v1.0 ";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
