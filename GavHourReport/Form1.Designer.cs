@@ -35,8 +35,7 @@
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cVacation = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cIgnore = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -76,6 +75,7 @@
             this.eXPORTToolStripMenuItem.Name = "eXPORTToolStripMenuItem";
             this.eXPORTToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.eXPORTToolStripMenuItem.Text = "3) EXPORT";
+            this.eXPORTToolStripMenuItem.Click += new System.EventHandler(this.eXPORTToolStripMenuItem_Click);
             // 
             // dgvData
             // 
@@ -85,8 +85,7 @@
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cDate,
             this.cDay,
-            this.cHours,
-            this.cMin,
+            this.cTIME,
             this.cSick,
             this.cVacation,
             this.cIgnore});
@@ -95,7 +94,6 @@
             this.dgvData.Name = "dgvData";
             this.dgvData.Size = new System.Drawing.Size(972, 529);
             this.dgvData.TabIndex = 2;
-            this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             // 
             // cDate
             // 
@@ -113,19 +111,12 @@
             this.cDay.ReadOnly = true;
             this.cDay.Width = 51;
             // 
-            // cHours
+            // cTIME
             // 
-            this.cHours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cHours.HeaderText = "HH";
-            this.cHours.Name = "cHours";
-            this.cHours.Width = 48;
-            // 
-            // cMin
-            // 
-            this.cMin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cMin.HeaderText = "MM";
-            this.cMin.Name = "cMin";
-            this.cMin.Width = 50;
+            this.cTIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cTIME.HeaderText = "Total";
+            this.cTIME.Name = "cTIME";
+            this.cTIME.Width = 56;
             // 
             // cSick
             // 
@@ -175,8 +166,7 @@
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cHours;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTIME;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cSick;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cVacation;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cIgnore;
