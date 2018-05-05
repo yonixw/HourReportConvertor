@@ -39,6 +39,7 @@
             this.cMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cVacation = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cIgnore = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +87,8 @@
             this.cHours,
             this.cMin,
             this.cSick,
-            this.cVacation});
+            this.cVacation,
+            this.cIgnore});
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.Location = new System.Drawing.Point(0, 24);
             this.dgvData.Name = "dgvData";
@@ -137,6 +139,11 @@
             this.cVacation.Name = "cVacation";
             this.cVacation.Width = 61;
             // 
+            // cIgnore
+            // 
+            this.cIgnore.HeaderText = "Ignore?";
+            this.cIgnore.Name = "cIgnore";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +175,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cMin;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cSick;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cVacation;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cIgnore;
     }
 }
 
