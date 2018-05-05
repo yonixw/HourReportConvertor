@@ -60,5 +60,19 @@ namespace GavHourReport
         {
 
         }
+
+        private void loadEXELToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Title = "Choose RPT excel to import";
+            dlg.Filter = "Excel|*.xls;*.xlsx";
+            dlg.CheckFileExists = true;
+            dlg.Multiselect = false;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                ExcelFlow.RPTImport.import(dlg.FileName);
+            }
+        }
     }
 }
