@@ -30,13 +30,21 @@ namespace GavHourReport
                     dgvData.Rows.Clear();
 
                     currentMonth = day.Month;
+
+                    DataGridViewCellStyle style = new DataGridViewCellStyle();
+                    style.BackColor = Color.Salmon;
                     while (day.Month == currentMonth)
                     {
-                        if (day.DayOfWeek != DayOfWeek.Friday && day.DayOfWeek != DayOfWeek.Saturday)
                             dgvData.Rows.Add(new object[] {
                                 day.ToString("dd/MM"),
                                 culture.DateTimeFormat.GetDayName(day.DayOfWeek),
                                 0, 0, false, false });
+
+                        if (day.DayOfWeek == DayOfWeek.Friday || day.DayOfWeek == DayOfWeek.Saturday)
+                        {
+                            dgvData.Rows[dgvData.Rows.Count - 1].DefaultCellStyle = style;
+                            dgvData.Rows[dgvData.Rows.Count - 1].ReadOnly = true;
+                        }
 
                         day = day.AddDays(1);
                     }
@@ -46,6 +54,11 @@ namespace GavHourReport
                     MessageBox.Show("Cant understand \"" + inputDate + "\". please use MM/YY");
                 }
             }
+        }
+
+        private void dgvData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

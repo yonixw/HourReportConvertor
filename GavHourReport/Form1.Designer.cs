@@ -94,6 +94,7 @@
             this.dgvData.Name = "dgvData";
             this.dgvData.Size = new System.Drawing.Size(972, 529);
             this.dgvData.TabIndex = 2;
+            this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             // 
             // cDate
             // 
@@ -141,8 +142,10 @@
             // 
             // cIgnore
             // 
+            this.cIgnore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cIgnore.HeaderText = "Ignore?";
             this.cIgnore.Name = "cIgnore";
+            this.cIgnore.Width = 49;
             // 
             // Form1
             // 
