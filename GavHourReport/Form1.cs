@@ -104,6 +104,46 @@ namespace GavHourReport
             }
         }
 
+        
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Title = "Choose RPT excel to import";
+            dlg.Filter = "Excel|*.xls;*.xlsx";
+            dlg.CheckFileExists = true;
+            dlg.Multiselect = false;
+
+            try
+            {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    Dictionary<string, ExcelFlow.DayInfo> importData = ExcelFlow.RPTImportType2.import(dlg.FileName);
+
+                    foreach (DataGridViewRow row in dgvData.Rows)
+                    {
+                        string dateKey = row.Cells[0].Value.ToString();
+                        if (importData.ContainsKey(dateKey))
+                        {
+                            TimeSpan startTime = importData[dateKey].dayStart;
+                            TimeSpan totalTime = importData[dateKey].dayLength;
+                            row.Cells["cTIME"].Value = string.Format("{0:00}:{1:00}",
+                               (int)totalTime.TotalHours,
+                                    totalTime.Minutes);
+                            row.Cells["cStart"].Value = string.Format("{0:00}:{1:00}",
+                               (int)startTime.TotalHours,
+                                    startTime.Minutes);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+
         private void eXPORTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try

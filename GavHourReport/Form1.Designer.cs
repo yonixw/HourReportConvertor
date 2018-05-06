@@ -155,15 +155,16 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem2.Text = "1";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(301, 22);
+            this.toolStripMenuItem2.Text = "נוכחות-דוח שעות מפורט לפי עובד";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem3.Text = "2";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(301, 22);
+            this.toolStripMenuItem3.Text = "נוכחות-דוח ניתוח שעות והכנה לשכר לאקסל";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // Form1
             // 
