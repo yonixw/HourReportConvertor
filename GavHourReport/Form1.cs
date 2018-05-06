@@ -45,12 +45,14 @@ namespace GavHourReport
                             dgvData.Rows.Add(new object[] {
                                 day.ToString(dateFormat),
                                 culture.DateTimeFormat.GetDayName(day.DayOfWeek),
-                                "00:00","00:00", false, false, false });
+                                "00:00","00:00"});
 
                             if (day.DayOfWeek == DayOfWeek.Friday || day.DayOfWeek == DayOfWeek.Saturday)
                             {
                                 dgvData.Rows[dgvData.Rows.Count - 1].DefaultCellStyle = style;
-                                dgvData.Rows[dgvData.Rows.Count - 1].Cells["cIgnore"].Value = true;
+                                DataGridViewComboBoxCell cell =
+                                ((DataGridViewComboBoxCell)dgvData.Rows[dgvData.Rows.Count - 1].Cells["cOther"]);
+                                cell.Value = cell.Items[0];
                             }
                             else
                             {
@@ -191,7 +193,7 @@ namespace GavHourReport
                 {
                     if (dlgSave.ShowDialog() == DialogResult.OK)
                     {
-
+                        ExcelFlow.GavExporter.export(lastMonthLoad, dgvData.Rows, dlgOpen.FileName, dlgSave.FileName);
                     }
                 }
 

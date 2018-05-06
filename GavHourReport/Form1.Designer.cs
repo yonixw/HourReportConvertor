@@ -33,15 +33,13 @@
             this.loadEXELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXPORTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvData = new System.Windows.Forms.DataGridView();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cSick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cVacation = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cIgnore = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cOther = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
@@ -92,14 +90,26 @@
             this.cDay,
             this.cStart,
             this.cTIME,
-            this.cSick,
-            this.cVacation,
-            this.cIgnore});
+            this.cOther});
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.Location = new System.Drawing.Point(0, 24);
             this.dgvData.Name = "dgvData";
             this.dgvData.Size = new System.Drawing.Size(972, 529);
             this.dgvData.TabIndex = 2;
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(301, 22);
+            this.toolStripMenuItem2.Text = "נוכחות-דוח שעות מפורט לפי עובד";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(301, 22);
+            this.toolStripMenuItem3.Text = "נוכחות-דוח ניתוח שעות והכנה לשכר לאקסל";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // cDate
             // 
@@ -131,40 +141,19 @@
             this.cTIME.Name = "cTIME";
             this.cTIME.Width = 85;
             // 
-            // cSick
+            // cOther
             // 
-            this.cSick.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cSick.HeaderText = "Sick?";
-            this.cSick.Name = "cSick";
-            this.cSick.Width = 40;
-            // 
-            // cVacation
-            // 
-            this.cVacation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cVacation.HeaderText = "Vacation?";
-            this.cVacation.Name = "cVacation";
-            this.cVacation.Width = 61;
-            // 
-            // cIgnore
-            // 
-            this.cIgnore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cIgnore.HeaderText = "Ignore?";
-            this.cIgnore.Name = "cIgnore";
-            this.cIgnore.Width = 49;
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(301, 22);
-            this.toolStripMenuItem2.Text = "נוכחות-דוח שעות מפורט לפי עובד";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(301, 22);
-            this.toolStripMenuItem3.Text = "נוכחות-דוח ניתוח שעות והכנה לשכר לאקסל";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            this.cOther.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cOther.HeaderText = "Reason?";
+            this.cOther.Items.AddRange(new object[] {
+            "חשבון המערכת (התעלם)",
+            "מחלה באישור",
+            "חופשה",
+            "מחלת ילד",
+            "הולדת בן/בת"});
+            this.cOther.Name = "cOther";
+            this.cOther.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cOther.Width = 56;
             // 
             // Form1
             // 
@@ -191,15 +180,13 @@
         private System.Windows.Forms.ToolStripMenuItem loadEXELToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eXPORTToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgvData;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn cStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTIME;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cSick;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cVacation;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cIgnore;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn cOther;
     }
 }
 

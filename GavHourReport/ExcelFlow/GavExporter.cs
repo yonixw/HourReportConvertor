@@ -18,6 +18,11 @@ namespace GavHourReport.ExcelFlow
         static string[] engMonths = new string[] {"January" ,"February","March","April","May","June","July"
             ,"August","September","October","November","December" };
 
+        enum HourTypeRow
+        {
+
+        }
+
         public static void export(DateTime currMonth, DataGridViewRowCollection rows,
             string templatePath, string exportPath)
         {
