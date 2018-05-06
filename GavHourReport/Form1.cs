@@ -180,14 +180,14 @@ namespace GavHourReport
             {
                 OpenFileDialog dlgOpen = new OpenFileDialog();
                 dlgOpen.Title = "Choose GAV excel TEMPLATE";
-                dlgOpen.Filter = "Excel|*.xls;*.xlsx";
+                dlgOpen.Filter = "Template|TEMPLATE.xls;TEMPLATE.xlsx";
                 dlgOpen.CheckFileExists = true;
                 dlgOpen.Multiselect = false;
 
                 SaveFileDialog dlgSave = new SaveFileDialog();
                 dlgSave.Title = "Save GAV EXPORT";
                 dlgSave.Filter = "Excel|*.xls;*.xlsx";
-                dlgSave.CheckFileExists = true;
+                dlgSave.CheckFileExists = false;
 
                 if (dlgOpen.ShowDialog() == DialogResult.OK)
                 {
