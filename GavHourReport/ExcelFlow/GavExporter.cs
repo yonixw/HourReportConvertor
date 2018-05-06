@@ -41,7 +41,7 @@ namespace GavHourReport.ExcelFlow
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error on date:" + row.Cells[0].Value.ToString() + Environment.NewLine
+                    MessageBox.Show("Error on date:" + row.Cells[0].Value.ToString() + Environment.NewLine +
                         ex.Message + Environment.NewLine + ex.StackTrace
                         );
                 }

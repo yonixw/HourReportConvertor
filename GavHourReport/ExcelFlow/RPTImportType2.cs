@@ -33,7 +33,7 @@ namespace GavHourReport.ExcelFlow
             Excel.Workbook workbook = app.Workbooks.Open(fileName);
             Excel.Worksheet wsheet = (Excel.Worksheet)workbook.ActiveSheet;
 
-            int row = 2; // start count from 1, and skip headers.
+            int row = 3; 
             string dateKey = val((Excel.Range)wsheet.Cells[row, RPTColv2.DATE], "");
 
             while (dateKey != "") // Day description should always exist.

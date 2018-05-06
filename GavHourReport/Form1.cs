@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GavHourReport
@@ -39,6 +35,11 @@ namespace GavHourReport
 
                         DataGridViewCellStyle style = new DataGridViewCellStyle();
                         style.BackColor = Color.Salmon;
+
+                        DataGridViewCellStyle styleDefault = new DataGridViewCellStyle();
+                        styleDefault.BackColor = Color.White;
+
+
                         while (day.Month == currentMonth)
                         {
                             dgvData.Rows.Add(new object[] {
@@ -50,6 +51,10 @@ namespace GavHourReport
                             {
                                 dgvData.Rows[dgvData.Rows.Count - 1].DefaultCellStyle = style;
                                 dgvData.Rows[dgvData.Rows.Count - 1].Cells["cIgnore"].Value = true;
+                            }
+                            else
+                            {
+                                dgvData.Rows[dgvData.Rows.Count - 1].DefaultCellStyle = styleDefault;
                             }
 
                             day = day.AddDays(1);
@@ -64,6 +69,25 @@ namespace GavHourReport
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void colorizeTable ( )
+        {
+            DataGridViewCellStyle styleHighlight = new DataGridViewCellStyle();
+            styleHighlight.BackColor = Color.Yellow;
+
+            DataGridViewCellStyle styleDefault = new DataGridViewCellStyle();
+            styleDefault.BackColor = Color.White;
+
+            foreach (DataGridViewRow row in dgvData.Rows) {
+                if (row.DefaultCellStyle.BackColor == Color.White) // Not weekend
+                {
+                    if ((string)row.Cells["cTIME"].Value == "00:00")
+                        row.DefaultCellStyle = styleHighlight;
+                    else
+                        row.DefaultCellStyle = styleDefault;
+                }
             }
         }
 
@@ -96,6 +120,8 @@ namespace GavHourReport
                                     startTime.Minutes);
                         }
                     }
+
+                    colorizeTable();
                 }
             }
             catch (Exception ex)
@@ -135,6 +161,8 @@ namespace GavHourReport
                                     startTime.Minutes);
                         }
                     }
+
+                    colorizeTable();
                 }
             }
             catch (Exception ex)
