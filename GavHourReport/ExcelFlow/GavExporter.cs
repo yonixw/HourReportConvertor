@@ -10,7 +10,7 @@ namespace GavHourReport.ExcelFlow
 
     class GavExporter
     {
-        public static TimeSpan fulldayLength = new TimeSpan(9, 10, 0);
+        public static TimeSpan fulldayLength = new TimeSpan(9, 06, 0);
         public static TimeSpan minWorkdayLength = new TimeSpan(5, 10, 0);
         public static TimeSpan minWorkForBreak = new TimeSpan(6, 0, 0);
         public static TimeSpan breakLength = new TimeSpan(0, 30, 0);
