@@ -40,6 +40,7 @@
             this.cStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cOther = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gAVTickTackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
@@ -75,10 +76,11 @@
             // eXPORTToolStripMenuItem
             // 
             this.eXPORTToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.eXPORTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gAVTickTackToolStripMenuItem});
             this.eXPORTToolStripMenuItem.Name = "eXPORTToolStripMenuItem";
             this.eXPORTToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.eXPORTToolStripMenuItem.Text = "3) EXPORT";
-            this.eXPORTToolStripMenuItem.Click += new System.EventHandler(this.eXPORTToolStripMenuItem_Click);
             // 
             // dgvData
             // 
@@ -155,6 +157,13 @@
             this.cOther.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cOther.Width = 56;
             // 
+            // gAVTickTackToolStripMenuItem
+            // 
+            this.gAVTickTackToolStripMenuItem.Name = "gAVTickTackToolStripMenuItem";
+            this.gAVTickTackToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gAVTickTackToolStripMenuItem.Text = "GAV TickTack";
+            this.gAVTickTackToolStripMenuItem.Click += new System.EventHandler(this.eXPORTToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,6 +196,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTIME;
         private System.Windows.Forms.DataGridViewComboBoxColumn cOther;
+        private System.Windows.Forms.ToolStripMenuItem gAVTickTackToolStripMenuItem;
     }
 }
 

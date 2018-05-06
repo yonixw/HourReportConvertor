@@ -186,14 +186,17 @@ namespace GavHourReport
 
                 SaveFileDialog dlgSave = new SaveFileDialog();
                 dlgSave.Title = "Save GAV EXPORT";
-                dlgSave.Filter = "Excel|*.xls;*.xlsx";
+                dlgSave.Filter = "Excel|*.xls";
                 dlgSave.CheckFileExists = false;
 
                 if (dlgOpen.ShowDialog() == DialogResult.OK)
                 {
                     if (dlgSave.ShowDialog() == DialogResult.OK)
                     {
-                        ExcelFlow.GavExporter.export(lastMonthLoad, dgvData.Rows, dlgOpen.FileName, dlgSave.FileName);
+                        string savePath = dlgSave.FileName;
+                        if (!savePath.EndsWith(".xls"))
+                            savePath += ".xls";
+                        ExcelFlow.GavExporter.export(lastMonthLoad, dgvData.Rows, dlgOpen.FileName,savePath );
                     }
                 }
 
