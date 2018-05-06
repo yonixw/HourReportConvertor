@@ -40,6 +40,8 @@
             this.cSick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cVacation = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cIgnore = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
@@ -65,10 +67,12 @@
             // 
             // loadEXELToolStripMenuItem
             // 
+            this.loadEXELToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3});
             this.loadEXELToolStripMenuItem.Name = "loadEXELToolStripMenuItem";
             this.loadEXELToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.loadEXELToolStripMenuItem.Text = "2) Load hours";
-            this.loadEXELToolStripMenuItem.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
             // 
             // eXPORTToolStripMenuItem
             // 
@@ -148,6 +152,19 @@
             this.cIgnore.Name = "cIgnore";
             this.cIgnore.Width = 49;
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2.Text = "1";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Text = "2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,6 +197,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn cSick;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cVacation;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cIgnore;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }
 
