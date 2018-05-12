@@ -31,16 +31,18 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loadTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadEXELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eXPORTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvData = new System.Windows.Forms.DataGridView();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.eXPORTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gAVTickTackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvData = new System.Windows.Forms.DataGridView();
             this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cOther = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.gAVTickTackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gAVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +52,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadTemplateToolStripMenuItem,
             this.loadEXELToolStripMenuItem,
-            this.eXPORTToolStripMenuItem});
+            this.eXPORTToolStripMenuItem,
+            this.statsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(972, 24);
@@ -73,6 +76,20 @@
             this.loadEXELToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.loadEXELToolStripMenuItem.Text = "2) Load hours";
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(301, 22);
+            this.toolStripMenuItem2.Text = "נוכחות-דוח שעות מפורט לפי עובד";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(301, 22);
+            this.toolStripMenuItem3.Text = "נוכחות-דוח ניתוח שעות והכנה לשכר לאקסל";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
             // eXPORTToolStripMenuItem
             // 
             this.eXPORTToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -81,6 +98,13 @@
             this.eXPORTToolStripMenuItem.Name = "eXPORTToolStripMenuItem";
             this.eXPORTToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.eXPORTToolStripMenuItem.Text = "3) EXPORT";
+            // 
+            // gAVTickTackToolStripMenuItem
+            // 
+            this.gAVTickTackToolStripMenuItem.Name = "gAVTickTackToolStripMenuItem";
+            this.gAVTickTackToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.gAVTickTackToolStripMenuItem.Text = "GAV TickTack";
+            this.gAVTickTackToolStripMenuItem.Click += new System.EventHandler(this.eXPORTToolStripMenuItem_Click);
             // 
             // dgvData
             // 
@@ -98,20 +122,6 @@
             this.dgvData.Name = "dgvData";
             this.dgvData.Size = new System.Drawing.Size(972, 529);
             this.dgvData.TabIndex = 2;
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(301, 22);
-            this.toolStripMenuItem2.Text = "נוכחות-דוח שעות מפורט לפי עובד";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(301, 22);
-            this.toolStripMenuItem3.Text = "נוכחות-דוח ניתוח שעות והכנה לשכר לאקסל";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // cDate
             // 
@@ -157,12 +167,20 @@
             this.cOther.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cOther.Width = 56;
             // 
-            // gAVTickTackToolStripMenuItem
+            // statsToolStripMenuItem
             // 
-            this.gAVTickTackToolStripMenuItem.Name = "gAVTickTackToolStripMenuItem";
-            this.gAVTickTackToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.gAVTickTackToolStripMenuItem.Text = "GAV TickTack";
-            this.gAVTickTackToolStripMenuItem.Click += new System.EventHandler(this.eXPORTToolStripMenuItem_Click);
+            this.statsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gAVToolStripMenuItem});
+            this.statsToolStripMenuItem.Name = "statsToolStripMenuItem";
+            this.statsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.statsToolStripMenuItem.Text = "[ Stats ]";
+            // 
+            // gAVToolStripMenuItem
+            // 
+            this.gAVToolStripMenuItem.Name = "gAVToolStripMenuItem";
+            this.gAVToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gAVToolStripMenuItem.Text = "GAV";
+            this.gAVToolStripMenuItem.Click += new System.EventHandler(this.gAVToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -198,6 +216,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cTIME;
         private System.Windows.Forms.DataGridViewComboBoxColumn cOther;
         private System.Windows.Forms.ToolStripMenuItem gAVTickTackToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem statsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gAVToolStripMenuItem;
     }
 }
 

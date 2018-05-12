@@ -74,7 +74,7 @@ namespace GavHourReport
             }
         }
 
-        private void colorizeTable ( )
+        private void colorizeTable()
         {
             DataGridViewCellStyle styleHighlight = new DataGridViewCellStyle();
             styleHighlight.BackColor = Color.Yellow;
@@ -132,7 +132,7 @@ namespace GavHourReport
             }
         }
 
-        
+
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
@@ -196,7 +196,7 @@ namespace GavHourReport
                         string savePath = dlgSave.FileName;
                         if (!savePath.EndsWith(".xls"))
                             savePath += ".xls";
-                        ExcelFlow.GavExporter.export(lastMonthLoad, dgvData.Rows, dlgOpen.FileName,savePath );
+                        ExcelFlow.GavExporter.export(lastMonthLoad, dgvData.Rows, dlgOpen.FileName, savePath);
                     }
                 }
 
@@ -217,5 +217,66 @@ namespace GavHourReport
             }
 
         }
+
+        private void gAVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TimeSpan minWorkForBreak = new TimeSpan(6, 0, 0);
+            TimeSpan breakLength = new TimeSpan(0, 30, 0);
+
+            TimeSpan totalEffectiveWork = TimeSpan.Zero;
+            TimeSpan totalWorkHours = TimeSpan.Zero;
+            TimeSpan totalBreak = TimeSpan.Zero;
+
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                try
+                {
+
+                    TimeSpan rowWorkLength = TimeSpan.Parse((string)row.Cells["cTIME"].Value);
+
+                    if (rowWorkLength.TotalMinutes > 0)
+                    {
+                        if (rowWorkLength <= minWorkForBreak)
+                        {
+                            totalEffectiveWork += rowWorkLength;
+                        }
+                        else
+                        {
+                            totalBreak += breakLength;
+                            totalEffectiveWork += rowWorkLength - breakLength;
+                        }
+                        totalWorkHours += rowWorkLength;
+                    }
+
+
+
+
+                } catch (Exception ex)
+                {
+                    MessageBox.Show("Error on date:" + row.Cells[0].Value.ToString() + Environment.NewLine +
+                      ex.Message + Environment.NewLine + ex.StackTrace
+                      );
+                }
+            }
+
+            MessageBox.Show(
+                "Total work:\t" + exTimeStr(totalWorkHours) +
+                "\nEffective work:\t" + exTimeStr(totalEffectiveWork) +
+                "\nTotalBreak:\t" + exTimeStr(totalBreak) + 
+                "\n** Time may be little lower due to fraction accuracy"
+                , "Stats (Gav)");
+        }
+
+        static string exTimeStr(TimeSpan time)
+        {
+            return
+                string.Format("{0:00}:{1:00} -OR- {2:00}.{3:00}",
+                               (int)time.TotalHours,
+                                    time.Minutes,
+                                    (int)time.TotalHours,
+                                    Math.Round(time.Minutes * 1.0 / 60,2) * 100
+                                    );
+        }
+
     }
 }
