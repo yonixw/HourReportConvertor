@@ -95,6 +95,9 @@ namespace GavHourReport
 
         private void loadEXELToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if ((new frmPreview(GavHourReport.Properties.Resources.detailed).ShowDialog()) != DialogResult.OK)
+                return;
+
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Title = "Choose RPT excel to import";
             dlg.Filter = "Excel|*.xls;*.xlsx";
@@ -136,6 +139,9 @@ namespace GavHourReport
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
+            if ((new frmPreview(GavHourReport.Properties.Resources.prepare).ShowDialog()) != DialogResult.OK)
+                return;
+
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Title = "Choose RPT excel to import";
             dlg.Filter = "Excel|*.xls;*.xlsx";
@@ -176,6 +182,9 @@ namespace GavHourReport
 
         private void eXPORTToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if ((new frmPreview(GavHourReport.Properties.Resources.ticktack).ShowDialog()) != DialogResult.OK)
+                return;
+
             try
             {
                 OpenFileDialog dlgOpen = new OpenFileDialog();
