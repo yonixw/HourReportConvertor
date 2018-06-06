@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
+
+//נוכחות-דוח ניתוח שעות והכנה לשכר לאקסל
 
 namespace GavHourReport.ExcelFlow
 {
@@ -36,10 +39,12 @@ namespace GavHourReport.ExcelFlow
             int row = 3; 
             string dateKey = val((Excel.Range)wsheet.Cells[row, RPTColv2.DATE], "");
 
+            TimeSpan allTimeCounter = TimeSpan.FromSeconds(0);
             while (dateKey != "") // Day description should always exist.
             {
                 // `*` if changed manually??
                 double totalTime = val((Excel.Range)wsheet.Cells[row, RPTColv2.ROWTIME],0.0);
+                totalTime = Math.Round(totalTime, 2);
 
                 if (totalTime  >  1.0/60.0) // one minute
                 {
@@ -55,13 +60,20 @@ namespace GavHourReport.ExcelFlow
                     }
 
                     resultDic[dateKey].dayLength = TimeSpan.FromMinutes(Math.Floor(totalTime * 60));
+                    allTimeCounter += resultDic[dateKey].dayLength;
                 }
 
                 row++;
                 dateKey = val((Excel.Range)wsheet.Cells[row, RPTColv2.DATE], "");
             }
 
+            // Read total:
+            double allTimeExcel = Math.Round(val((Excel.Range)wsheet.Cells[row, RPTColv2.ROWTIME], 0.0),2);
+
             app.Quit();
+            MessageBox.Show("Add manually: "
+                + Math.Ceiling((allTimeExcel - allTimeCounter.TotalMinutes / 60.0) * 60)
+                + " Minutes\nExcel total time is:\n " + Form1.exTimeStr(TimeSpan.FromHours(allTimeExcel)) );
 
             return resultDic;
         }
