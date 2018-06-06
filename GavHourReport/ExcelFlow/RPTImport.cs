@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Excel = Microsoft.Office.Interop.Excel;
 
+// נוכחות-דוח שעות מפורט לפי עובד
+
 namespace GavHourReport.ExcelFlow
 {
     public class DayInfo

@@ -271,12 +271,11 @@ namespace GavHourReport
             MessageBox.Show(
                 "Total work:\t" + exTimeStr(totalWorkHours) +
                 "\nEffective work:\t" + exTimeStr(totalEffectiveWork) +
-                "\nTotalBreak:\t" + exTimeStr(totalBreak) + 
-                "\n** Time may be little lower due to fraction accuracy"
+                "\nTotalBreak:\t" + exTimeStr(totalBreak) 
                 , "Stats (Gav)");
         }
 
-        static string exTimeStr(TimeSpan time)
+        public static string exTimeStr(TimeSpan time)
         {
             return
                 string.Format("{0:00}:{1:00} -OR- {2:00}.{3:00}",
