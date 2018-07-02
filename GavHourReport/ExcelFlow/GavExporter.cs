@@ -23,7 +23,8 @@ namespace GavHourReport.ExcelFlow
         {
             WORK = 7,
             BREAK = 8,
-            OTHER_START = 9
+            WORK_ALMOST_FULL = 9,
+            OTHER_START = 10
         }
 
         static string timeStr(TimeSpan time)

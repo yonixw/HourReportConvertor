@@ -31,8 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loadTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadEXELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.eXPORTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gAVTickTackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,19 +76,19 @@
             this.loadEXELToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.loadEXELToolStripMenuItem.Text = "2) Load hours";
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(301, 22);
-            this.toolStripMenuItem2.Text = "(נוכחות-דוח שעות מפורט לפי עובד)";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
-            // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(301, 22);
             this.toolStripMenuItem3.Text = "נוכחות-דוח ניתוח שעות והכנה לשכר לאקסל";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(301, 22);
+            this.toolStripMenuItem2.Text = "(נוכחות-דוח שעות מפורט לפי עובד)";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.loadEXELToolStripMenuItem_Click);
             // 
             // eXPORTToolStripMenuItem
             // 
@@ -102,7 +102,7 @@
             // gAVTickTackToolStripMenuItem
             // 
             this.gAVTickTackToolStripMenuItem.Name = "gAVTickTackToolStripMenuItem";
-            this.gAVTickTackToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gAVTickTackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gAVTickTackToolStripMenuItem.Text = "GAV TickTack";
             this.gAVTickTackToolStripMenuItem.Click += new System.EventHandler(this.eXPORTToolStripMenuItem_Click);
             // 
@@ -117,7 +117,7 @@
             // gAVToolStripMenuItem
             // 
             this.gAVToolStripMenuItem.Name = "gAVToolStripMenuItem";
-            this.gAVToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.gAVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gAVToolStripMenuItem.Text = "GAV";
             this.gAVToolStripMenuItem.Click += new System.EventHandler(this.gAVToolStripMenuItem_Click);
             // 
@@ -192,7 +192,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Work hour converter v1.0 ";
+            this.Text = "Work hour converter v1.3";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

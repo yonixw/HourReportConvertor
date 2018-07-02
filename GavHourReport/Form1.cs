@@ -189,7 +189,7 @@ namespace GavHourReport
             {
                 OpenFileDialog dlgOpen = new OpenFileDialog();
                 dlgOpen.Title = "Choose GAV excel TEMPLATE";
-                dlgOpen.Filter = "Template|TEMPLATE.xls;TEMPLATE.xlsx";
+                dlgOpen.Filter = "TICKTACK_TEMPLATEv1.3.xls|TICKTACK_TEMPLATEv1.3.xls";
                 dlgOpen.CheckFileExists = true;
                 dlgOpen.Multiselect = false;
 
