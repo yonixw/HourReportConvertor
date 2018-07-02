@@ -223,8 +223,8 @@ namespace GavHourReport
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string pass = Microsoft.VisualBasic.Interaction.InputBox("Yoni is _ _ _ _ ");
-            if (pass.ToLower() != "king")
+            frmDlgPassword pass = new frmDlgPassword();
+            if (pass.ShowDialog() != DialogResult.OK)
             {
                 MessageBox.Show("Gal is not king. Bye bye.");
                 Application.Exit();
