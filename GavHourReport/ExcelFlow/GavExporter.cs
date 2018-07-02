@@ -23,7 +23,7 @@ namespace GavHourReport.ExcelFlow
         {
             WORK = 7,
             BREAK = 8,
-            WORK_ALMOST_FULL = 9,
+            WORK_FORCE_BREAK = 9,
             OTHER_START = 10
         }
 
@@ -45,15 +45,15 @@ namespace GavHourReport.ExcelFlow
             Excel.Worksheet wsheet = (Excel.Worksheet)workbook.ActiveSheet;
 
             // Set Month
-            ((Excel.Range)wsheet.Cells[2, 2]).Value2 = engMonths[currMonth.Month -1];
+            ((Excel.Range)wsheet.Cells[2, 2]).Value2 = engMonths[currMonth.Month - 1];
             // Set year:
-            ((Excel.Range)wsheet.Cells[3,2]).Value2 = currMonth.Year;
+            ((Excel.Range)wsheet.Cells[3, 2]).Value2 = currMonth.Year;
 
             int currentCol = 5;
-            foreach(DataGridViewRow row in rows)
+            foreach (DataGridViewRow row in rows)
             {
                 try
-                { 
+                {
 
                     TimeSpan rowWorkLength = TimeSpan.Parse((string)row.Cells["cTIME"].Value);
                     TimeSpan rowStartTime = TimeSpan.Parse((string)row.Cells["cStart"].Value);
@@ -67,9 +67,15 @@ namespace GavHourReport.ExcelFlow
                         if (rowWorkLength > minWorkForBreak)
                             rowBreakLength = breakLength;
 
-                        ((Excel.Range)wsheet.Cells[HourTypeRow.WORK, currentCol]).Value 
-                            = timeStr(rowStartTime);
-                        ((Excel.Range)wsheet.Cells[HourTypeRow.WORK, currentCol + 1]).Value 
+                        HourTypeRow workType = HourTypeRow.WORK;
+                        if (rowWorkLength - rowBreakLength < minWorkForBreak)
+                            // if you work 6.10 but taken 0.5 break you left with 5.4 and not qulify 
+                            // for break, so we need special code:
+                            workType = HourTypeRow.WORK_FORCE_BREAK;
+
+                        ((Excel.Range)wsheet.Cells[workType, currentCol]).Value
+                        = timeStr(rowStartTime);
+                        ((Excel.Range)wsheet.Cells[workType, currentCol + 1]).Value
                             = timeStr(rowStartTime + rowWorkLength - rowBreakLength);
 
                         if (rowBreakLength.TotalMinutes > 0)
@@ -121,7 +127,7 @@ namespace GavHourReport.ExcelFlow
             workbook.Close(SaveChanges: false);
 
             app.Quit();
-      
+
         }
     }
 }
