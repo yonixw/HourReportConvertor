@@ -21,51 +21,48 @@ namespace GavHourReport
         {
             try
             {
-                string inputDate = Microsoft.VisualBasic.Interaction.InputBox("Put Date: <MM>/<YY>");
-                if (inputDate != "")
+                //string inputDate = Microsoft.VisualBasic.Interaction.InputBox("Put Date: <MM>/<YY>");
+                frmDateChooser frmDateChooser = new frmDateChooser();
+                if (frmDateChooser.ShowDialog() == DialogResult.OK)
                 {
-                    DateTime day;
+                    DateTime day = frmDateChooser.ResultDate;
                     int currentMonth = -1;
-                    if (DateTime.TryParse("01/" + inputDate, out day))
+
+                    dgvData.Rows.Clear();
+                    lastMonthLoad = day;
+
+                    currentMonth = day.Month;
+
+                    DataGridViewCellStyle style = new DataGridViewCellStyle();
+                    style.BackColor = Color.Salmon;
+
+                    DataGridViewCellStyle styleDefault = new DataGridViewCellStyle();
+                    styleDefault.BackColor = Color.White;
+
+
+                    while (day.Month == currentMonth)
                     {
-                        dgvData.Rows.Clear();
-                        lastMonthLoad = day;
-
-                        currentMonth = day.Month;
-
-                        DataGridViewCellStyle style = new DataGridViewCellStyle();
-                        style.BackColor = Color.Salmon;
-
-                        DataGridViewCellStyle styleDefault = new DataGridViewCellStyle();
-                        styleDefault.BackColor = Color.White;
-
-
-                        while (day.Month == currentMonth)
-                        {
-                            dgvData.Rows.Add(new object[] {
+                        dgvData.Rows.Add(new object[] {
                                 day.ToString(dateFormat),
                                 culture.DateTimeFormat.GetDayName(day.DayOfWeek),
                                 "00:00","00:00"});
 
-                            if (day.DayOfWeek == DayOfWeek.Friday || day.DayOfWeek == DayOfWeek.Saturday)
-                            {
-                                dgvData.Rows[dgvData.Rows.Count - 1].DefaultCellStyle = style;
-                                DataGridViewComboBoxCell cell =
-                                ((DataGridViewComboBoxCell)dgvData.Rows[dgvData.Rows.Count - 1].Cells["cOther"]);
-                                cell.Value = cell.Items[0];
-                            }
-                            else
-                            {
-                                dgvData.Rows[dgvData.Rows.Count - 1].DefaultCellStyle = styleDefault;
-                            }
-
-                            day = day.AddDays(1);
+                        if (day.DayOfWeek == DayOfWeek.Friday || day.DayOfWeek == DayOfWeek.Saturday)
+                        {
+                            dgvData.Rows[dgvData.Rows.Count - 1].DefaultCellStyle = style;
+                            DataGridViewComboBoxCell cell =
+                            ((DataGridViewComboBoxCell)dgvData.Rows[dgvData.Rows.Count - 1].Cells["cOther"]);
+                            cell.Value = cell.Items[0];
                         }
+                        else
+                        {
+                            dgvData.Rows[dgvData.Rows.Count - 1].DefaultCellStyle = styleDefault;
+                        }
+
+                        day = day.AddDays(1);
                     }
-                    else
-                    {
-                        MessageBox.Show("Cant understand \"" + inputDate + "\". please use MM/YY");
-                    }
+
+
                 }
             }
             catch (Exception ex)
@@ -82,7 +79,8 @@ namespace GavHourReport
             DataGridViewCellStyle styleDefault = new DataGridViewCellStyle();
             styleDefault.BackColor = Color.White;
 
-            foreach (DataGridViewRow row in dgvData.Rows) {
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
                 if (row.DefaultCellStyle.BackColor == Color.White) // Not weekend
                 {
                     if ((string)row.Cells["cTIME"].Value == "00:00")
@@ -260,7 +258,8 @@ namespace GavHourReport
 
 
 
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error on date:" + row.Cells[0].Value.ToString() + Environment.NewLine +
                       ex.Message + Environment.NewLine + ex.StackTrace
@@ -271,7 +270,7 @@ namespace GavHourReport
             MessageBox.Show(
                 "Total work:\t" + exTimeStr(totalWorkHours) +
                 "\nEffective work:\t" + exTimeStr(totalEffectiveWork) +
-                "\nTotalBreak:\t" + exTimeStr(totalBreak) 
+                "\nTotalBreak:\t" + exTimeStr(totalBreak)
                 , "Stats (Gav)");
         }
 
@@ -282,7 +281,7 @@ namespace GavHourReport
                                (int)time.TotalHours,
                                     time.Minutes,
                                     (int)time.TotalHours,
-                                    Math.Round(time.Minutes * 1.0 / 60,2) * 100
+                                    Math.Round(time.Minutes * 1.0 / 60, 2) * 100
                                     );
         }
 
