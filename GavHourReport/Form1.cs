@@ -25,7 +25,8 @@ namespace GavHourReport
                 frmDateChooser frmDateChooser = new frmDateChooser();
                 if (frmDateChooser.ShowDialog() == DialogResult.OK)
                 {
-                    DateTime day = frmDateChooser.ResultDate;
+                    DateTime dialogResult = frmDateChooser.ResultDate;
+                    DateTime day = new DateTime(dialogResult.Year, dialogResult.Month,1);
                     int currentMonth = -1;
 
                     dgvData.Rows.Clear();
