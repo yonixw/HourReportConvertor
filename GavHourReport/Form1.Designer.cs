@@ -43,8 +43,14 @@
             this.cStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cOther = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblCurrentTotal = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblImportTotalHours = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -102,7 +108,7 @@
             // gAVTickTackToolStripMenuItem
             // 
             this.gAVTickTackToolStripMenuItem.Name = "gAVTickTackToolStripMenuItem";
-            this.gAVTickTackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gAVTickTackToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.gAVTickTackToolStripMenuItem.Text = "GAV TickTack";
             this.gAVTickTackToolStripMenuItem.Click += new System.EventHandler(this.eXPORTToolStripMenuItem_Click);
             // 
@@ -117,7 +123,7 @@
             // gAVToolStripMenuItem
             // 
             this.gAVToolStripMenuItem.Name = "gAVToolStripMenuItem";
-            this.gAVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gAVToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.gAVToolStripMenuItem.Text = "GAV";
             this.gAVToolStripMenuItem.Click += new System.EventHandler(this.gAVToolStripMenuItem_Click);
             // 
@@ -135,8 +141,10 @@
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.Location = new System.Drawing.Point(0, 24);
             this.dgvData.Name = "dgvData";
-            this.dgvData.Size = new System.Drawing.Size(972, 529);
+            this.dgvData.Size = new System.Drawing.Size(972, 507);
             this.dgvData.TabIndex = 2;
+            this.dgvData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellEndEdit);
+            this.dgvData.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellValueChanged);
             // 
             // cDate
             // 
@@ -182,12 +190,52 @@
             this.cOther.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cOther.Width = 56;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.lblCurrentTotal,
+            this.toolStripStatusLabel2,
+            this.lblImportTotalHours});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 531);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(972, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(115, 17);
+            this.toolStripStatusLabel1.Text = "Your reported hours:";
+            // 
+            // lblCurrentTotal
+            // 
+            this.lblCurrentTotal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblCurrentTotal.Name = "lblCurrentTotal";
+            this.lblCurrentTotal.Size = new System.Drawing.Size(59, 17);
+            this.lblCurrentTotal.Text = "0.0 (0:00)";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(137, 17);
+            this.toolStripStatusLabel2.Text = "Last import target hours:";
+            // 
+            // lblImportTotalHours
+            // 
+            this.lblImportTotalHours.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblImportTotalHours.Name = "lblImportTotalHours";
+            this.lblImportTotalHours.Size = new System.Drawing.Size(59, 17);
+            this.lblImportTotalHours.Text = "0.0 (0:00)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 553);
             this.Controls.Add(this.dgvData);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -197,6 +245,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,6 +268,11 @@
         private System.Windows.Forms.ToolStripMenuItem gAVTickTackToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gAVToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lblCurrentTotal;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel lblImportTotalHours;
     }
 }
 

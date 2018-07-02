@@ -26,7 +26,13 @@ namespace GavHourReport.ExcelFlow
             ROWTIME = 13
         }
 
-        public static Dictionary<string, DayInfo> import(string fileName)
+        public class ImportResult
+        {
+            public Dictionary<string, DayInfo> days;
+            public double reportedHours;
+        }
+
+        public static ImportResult import(string fileName)
         {
             Dictionary<string, DayInfo> resultDic = new Dictionary<string, DayInfo>();
 
@@ -71,11 +77,9 @@ namespace GavHourReport.ExcelFlow
             double allTimeExcel = Math.Round(val((Excel.Range)wsheet.Cells[row, RPTColv2.ROWTIME], 0.0),2);
 
             app.Quit();
-            MessageBox.Show("Add manually: "
-                + Math.Ceiling((allTimeExcel - allTimeCounter.TotalMinutes / 60.0) * 60)
-                + " Minutes\nExcel total time is:\n " + Form1.exTimeStr(TimeSpan.FromHours(allTimeExcel)) );
+           
 
-            return resultDic;
+            return new ImportResult() { days=  resultDic, reportedHours = allTimeExcel };
         }
     }
 }

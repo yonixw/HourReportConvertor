@@ -150,15 +150,15 @@ namespace GavHourReport
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    Dictionary<string, ExcelFlow.DayInfo> importData = ExcelFlow.RPTImportType2.import(dlg.FileName);
+                    ExcelFlow.RPTImportType2.ImportResult importData = ExcelFlow.RPTImportType2.import(dlg.FileName);
 
                     foreach (DataGridViewRow row in dgvData.Rows)
                     {
                         string dateKey = row.Cells[0].Value.ToString();
-                        if (importData.ContainsKey(dateKey))
+                        if (importData.days.ContainsKey(dateKey))
                         {
-                            TimeSpan startTime = importData[dateKey].dayStart;
-                            TimeSpan totalTime = importData[dateKey].dayLength;
+                            TimeSpan startTime = importData.days[dateKey].dayStart;
+                            TimeSpan totalTime = importData.days[dateKey].dayLength;
                             row.Cells["cTIME"].Value = string.Format("{0:00}:{1:00}",
                                (int)totalTime.TotalHours,
                                     totalTime.Minutes);
@@ -167,6 +167,8 @@ namespace GavHourReport
                                     startTime.Minutes);
                         }
                     }
+
+                    lblImportTotalHours.Text = exTimeStr(TimeSpan.FromHours(importData.reportedHours));
 
                     colorizeTable();
                 }
@@ -277,7 +279,7 @@ namespace GavHourReport
         public static string exTimeStr(TimeSpan time)
         {
             return
-                string.Format("{0:00}:{1:00} -OR- {2:00}.{3:00}",
+                string.Format("{0:00} Hours, {1:00} min  or {2:00}.{3:00}",
                                (int)time.TotalHours,
                                     time.Minutes,
                                     (int)time.TotalHours,
@@ -285,5 +287,36 @@ namespace GavHourReport
                                     );
         }
 
+        void updateCurrentTotal()
+        {
+            TimeSpan totalWorkHours = TimeSpan.Zero;
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                try
+                {
+
+                    TimeSpan rowWorkLength = TimeSpan.Parse((string)row.Cells["cTIME"].Value);
+
+                    if (rowWorkLength.TotalMinutes > 0)
+                    {
+
+                        totalWorkHours += rowWorkLength;
+                    }
+
+                }
+                catch (Exception ex) { }
+            }
+            lblCurrentTotal.Text = exTimeStr(totalWorkHours);
+        }
+
+        private void dgvData_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            updateCurrentTotal();
+        }
+
+        private void dgvData_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            updateCurrentTotal();
+        }
     }
 }
