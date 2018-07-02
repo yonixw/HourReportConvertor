@@ -173,6 +173,8 @@ namespace GavHourReport
 
                     colorizeTable();
                 }
+
+                MessageBox.Show("Import done!");
             }
             catch (Exception ex)
             {
@@ -209,12 +211,14 @@ namespace GavHourReport
                         ExcelFlow.GavExporter.export(lastMonthLoad, dgvData.Rows, dlgOpen.FileName, savePath);
                     }
                 }
-
+                MessageBox.Show("Export to TickTack Done!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace);
             }
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -318,6 +322,8 @@ namespace GavHourReport
         private void dgvData_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             updateCurrentTotal();
+            if (e.ColumnIndex == 4) // reason to prevent mouse wheel.
+                dgvData.EndEdit();
         }
     }
 }
